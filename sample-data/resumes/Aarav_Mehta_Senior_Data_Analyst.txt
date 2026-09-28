@@ -1,0 +1,34 @@
+Aarav Mehta
+aarav.mehta@example.com | +91 98765 43210 | Bangalore, Karnataka, India
+LinkedIn: linkedin.com/in/aarav-mehta-data | GitHub: github.com/aaravmehta
+
+PROFESSIONAL SUMMARY
+Senior Data Analyst with 6 years of experience in enterprise analytics, SQL data modeling, and business intelligence. Track record of optimizing query latencies by 45% and building predictive churn models saving $1.2M annually across 500k active users.
+
+CORE SKILLS & TECHNOLOGIES
+Languages & Querying: Python, SQL, PostgreSQL, T-SQL, Bash
+Analytics & BI: Power BI, Tableau, Advanced Excel, Looker, DAX
+Data Systems & Warehousing: Snowflake, BigQuery, dbt, Apache Airflow
+Methodologies: Data Modeling, ETL Pipeline Development, Statistical Analysis, A/B Testing
+
+PROFESSIONAL EXPERIENCE
+Senior Data Analyst | FinPulse Technologies, Bangalore
+July 2021 – Present (3+ years)
+- Architected enterprise financial reporting dashboards in Power BI and Tableau serving 150+ executives daily.
+- Optimized core SQL aggregation queries across 200M+ transactional records, reducing execution time by 45%.
+- Implemented automated Python-based data quality validation framework, eliminating manual auditing effort by 30%.
+- Designed and analyzed 25+ statistical A/B tests for product onboarding funnels, lifting customer conversion by 14%.
+
+Data Analyst | Zomato Analytics Division, Gurgaon
+June 2018 – June 2021 (3 years)
+- Built automated restaurant demand prediction models using Python (Scikit-Learn, Pandas) across 40 metro clusters.
+- Developed centralized Postgres schema and reporting marts for regional sales operations.
+- Delivered weekly cohort retention analysis reports to cross-functional product teams.
+
+EDUCATION
+Bachelor of Technology (B.Tech) in Computer Science & Engineering
+Indian Institute of Technology (IIT) Madras | Graduated 2018 | CGPA: 8.8/10
+
+CERTIFICATIONS
+- Microsoft Certified: Power BI Data Analyst Associate (PL-300)
+- AWS Certified Cloud Practitioner

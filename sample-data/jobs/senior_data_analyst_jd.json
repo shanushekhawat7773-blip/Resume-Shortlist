@@ -1,0 +1,42 @@
+{
+  "title": "Senior Data Analyst",
+  "company": "Nexus Enterprise Systems",
+  "department": "Data & Analytics",
+  "location": "Bangalore, India (Hybrid)",
+  "employment_type": "Full-time",
+  "seniority": "Senior",
+  "experience_required": 5,
+  "description": "Nexus Enterprise Systems is seeking a Senior Data Analyst to lead our product intelligence and financial analytics team. You will build scalable SQL queries, design executive dashboards, and derive predictive insights.",
+  "required_skills": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "PostgreSQL",
+    "Data Modeling"
+  ],
+  "preferred_skills": [
+    "Tableau",
+    "Snowflake",
+    "dbt",
+    "Airflow"
+  ],
+  "education": "Bachelor's or Master's degree in Computer Science, Statistics, Mathematics, or related field",
+  "certifications": [
+    "Microsoft Certified Power BI Analyst or AWS Analytics"
+  ],
+  "responsibilities": [
+    "Design and optimize high-throughput SQL queries across relational and cloud data warehouses",
+    "Architect interactive enterprise dashboards and KPI reports in Power BI for leadership stakeholders",
+    "Conduct statistical cohort analysis and A/B testing to inform core product roadmaps",
+    "Build automated data quality monitoring pipelines using Python"
+  ],
+  "domain": "Fintech & Enterprise Analytics",
+  "keywords": [
+    "SQL",
+    "Python",
+    "Power BI",
+    "Data Modeling",
+    "Tableau",
+    "Snowflake"
+  ]
+}

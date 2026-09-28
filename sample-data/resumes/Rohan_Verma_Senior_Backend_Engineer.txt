@@ -1,0 +1,28 @@
+Rohan Verma
+rohan.verma@example.com | +91 98765 43212 | Pune, Maharashtra, India
+LinkedIn: linkedin.com/in/rohanverma-dev | GitHub: github.com/rohanverma-eng
+
+PROFESSIONAL SUMMARY
+Senior Backend Engineer with 7 years of specialized expertise in distributed systems, event-driven microservices, high-throughput REST/gRPC APIs, and resilient data architectures.
+
+CORE SKILLS & TECHNOLOGIES
+Languages: Go (Golang), Python, Java, Node.js, SQL
+Databases & Cache: PostgreSQL, MySQL, Redis, Apache Kafka, MongoDB
+Cloud & DevOps: Docker, Kubernetes, AWS (ECS, S3, RDS), Terraform, CI/CD
+Architecture: Microservices, Distributed Systems, Event-Driven Architecture, Concurrency
+
+PROFESSIONAL EXPERIENCE
+Senior Backend Engineer | CloudScale FinTech, Pune
+October 2020 – Present (4 years)
+- Designed and scaled transaction ingestion microservices in Go and Python processing 15,000 requests per second.
+- Reduced database bottleneck incidents by 70% by introducing Redis caching cluster and connection pooling.
+- Authored Kafka event streaming consumers for asynchronous transaction settlement and fraud alerting.
+
+Backend Software Engineer | Tata Consultancy Services, Pune
+July 2017 – September 2020 (3 years)
+- Developed enterprise REST APIs in Java Spring Boot and PostgreSQL for banking client.
+- Implemented automated CI/CD pipelines with GitHub Actions and Docker reducing release cycle from 2 weeks to 2 days.
+
+EDUCATION
+Bachelor of Engineering (B.E.) in Information Technology
+College of Engineering Pune (COEP) | 2017

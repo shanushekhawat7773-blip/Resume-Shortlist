@@ -1,0 +1,42 @@
+{
+  "title": "Lead AI / ML Engineer",
+  "company": "Cognitive AI Labs",
+  "department": "Artificial Intelligence",
+  "location": "Hyderabad, India (Hybrid)",
+  "employment_type": "Full-time",
+  "seniority": "Lead",
+  "experience_required": 5,
+  "description": "Cognitive AI Labs is looking for a Lead AI/ML Engineer to architect state-of-the-art deep learning, NLP transformer models, and scalable MLOps inference pipelines.",
+  "required_skills": [
+    "Python",
+    "PyTorch",
+    "Machine Learning",
+    "Natural Language Processing",
+    "Docker"
+  ],
+  "preferred_skills": [
+    "Kubernetes",
+    "FastAPI",
+    "TensorFlow",
+    "MLflow"
+  ],
+  "education": "Master's or Ph.D. in Computer Science, Artificial Intelligence, or Electrical Engineering",
+  "certifications": [
+    "AWS Certified Machine Learning - Specialty"
+  ],
+  "responsibilities": [
+    "Architect and fine-tune large language models and transformer architectures for enterprise applications",
+    "Optimize inference latency and GPU utilization using quantization and TensorRT",
+    "Deploy containerized microservices via Docker and Kubernetes",
+    "Establish end-to-end MLOps tracking and continuous performance monitoring"
+  ],
+  "domain": "Applied Artificial Intelligence",
+  "keywords": [
+    "Python",
+    "PyTorch",
+    "Machine Learning",
+    "NLP",
+    "Transformers",
+    "Docker"
+  ]
+}

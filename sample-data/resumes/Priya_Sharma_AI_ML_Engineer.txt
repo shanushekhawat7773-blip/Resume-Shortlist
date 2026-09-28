@@ -1,0 +1,32 @@
+Priya Sharma
+priya.sharma@example.com | +91 98765 43211 | Hyderabad, Telangana, India
+LinkedIn: linkedin.com/in/priyasharma-ai | GitHub: github.com/priyasharma-ml
+
+PROFESSIONAL SUMMARY
+Lead AI/ML Engineer with 5+ years of experience in deep learning, transformer NLP architectures, computer vision, and real-time inference optimization. Published 2 research papers in applied ML.
+
+CORE SKILLS & TECHNOLOGIES
+Core Machine Learning: Python, PyTorch, TensorFlow, Scikit-Learn, NumPy, Pandas
+NLP & GenAI: Transformers, HuggingFace, LLM Fine-tuning, RAG, BERT, LangChain
+MLOps & Infrastructure: Docker, Kubernetes, MLflow, AWS SageMaker, FastAPI, ONNX
+Data & Storage: PostgreSQL, Redis, Vector DB (Milvus, Pinecone), Spark
+
+PROFESSIONAL EXPERIENCE
+Lead AI/ML Engineer | Nexus Cognitive Systems, Hyderabad
+August 2021 – Present (3+ years)
+- Designed and deployed enterprise multilingual NLP text summarization engine using fine-tuned LLaMA and RoBERTa models.
+- Reduced inference latency by 60% using ONNX runtime quantization and TensorRT optimizations.
+- Built vector search semantic retrieval pipeline handling 10M+ documents with sub-50ms query response time.
+- Managed team of 4 ML engineers through full development lifecycle from data labeling to continuous drift monitoring.
+
+Machine Learning Engineer | Quantix AI Labs, Bangalore
+July 2019 – July 2021 (2 years)
+- Developed deep learning convolutional models (CNN) for real-time document layout analysis and OCR extraction.
+- Engineered automated data augmentation pipelines in PyTorch increasing model precision from 88% to 94.2%.
+
+EDUCATION
+Master of Science (M.S.) in Artificial Intelligence
+International Institute of Information Technology (IIIT) Hyderabad | 2019
+
+Bachelor of Technology (B.Tech) in Computer Science
+National Institute of Technology (NIT) Warangal | 2017
