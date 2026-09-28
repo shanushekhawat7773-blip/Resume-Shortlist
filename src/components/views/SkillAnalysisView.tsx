@@ -12,7 +12,6 @@ import {
   Target,
 } from 'lucide-react';
 import { useRecruitment } from '../../context/RecruitmentContext';
-import { SKILL_ONTOLOGY } from '../../services/skillOntology';
 
 export const SkillAnalysisView: React.FC = () => {
   const { selectedCandidate, selectedJob, currentAnalysis, candidates, setSelectedCandidateId } = useRecruitment();

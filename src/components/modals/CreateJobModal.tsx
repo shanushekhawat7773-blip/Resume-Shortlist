@@ -12,7 +12,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { useRecruitment } from '../../context/RecruitmentContext';
-import { parseJobDescription, ExtractedJobIntelligence } from '../../services/jobParser';
+import { parseJobDescription } from '../../services/jobParser';
 
 interface CreateJobModalProps {
   isOpen: boolean;
@@ -55,20 +55,16 @@ export const CreateJobModal: React.FC<CreateJobModalProps> = ({ isOpen, onClose 
     setIsExtracting(true);
 
     setTimeout(() => {
-      const intel = parseJobDescription(rawJobDescription);
-      setTitle(intel.titleCandidate);
-      setExperienceRequired(intel.experienceYears);
-      if (intel.coreSkills.length > 0) setRequiredSkills(intel.coreSkills);
-      if (intel.softSkills.length > 0 || intel.technicalSkills.length > intel.coreSkills.length) {
-        setPreferredSkills([
-          ...intel.technicalSkills.filter(s => !intel.coreSkills.includes(s)).slice(0, 4),
-          ...intel.softSkills.slice(0, 3)
-        ]);
-      }
-      if (intel.responsibilities.length > 0) setResponsibilities(intel.responsibilities);
-      if (intel.educationRequirement) setEducation(intel.educationRequirement);
-      if (intel.domainRequirements.length > 0) setDomain(intel.domainRequirements[0]);
-      setDescription(rawJobDescription.slice(0, 400) + '...');
+      const result = parseJobDescription(rawJobDescription);
+      const parsed = result.job;
+      setTitle(parsed.title);
+      setExperienceRequired(parsed.experienceRequired);
+      if (parsed.requiredSkills.length > 0) setRequiredSkills(parsed.requiredSkills);
+      if (parsed.preferredSkills.length > 0) setPreferredSkills(parsed.preferredSkills);
+      if (parsed.responsibilities.length > 0) setResponsibilities(parsed.responsibilities);
+      if (parsed.education) setEducation(parsed.education);
+      if (parsed.domain) setDomain(parsed.domain);
+      setDescription(parsed.description || rawJobDescription.slice(0, 400) + '...');
 
       setIsExtracting(false);
       setExtractionDone(true);
@@ -118,6 +114,7 @@ export const CreateJobModal: React.FC<CreateJobModalProps> = ({ isOpen, onClose 
       department,
       location,
       employmentType,
+      seniority: 'Senior',
       experienceRequired: Number(experienceRequired),
       description: description || rawJobDescription || `Role for ${title} at ${company}`,
       requiredSkills,
@@ -127,6 +124,15 @@ export const CreateJobModal: React.FC<CreateJobModalProps> = ({ isOpen, onClose 
       responsibilities,
       domain,
       keywords: [...requiredSkills, ...preferredSkills, domain],
+      structuredRequirements: requiredSkills.map((req, idx) => ({
+        id: `req-${idx}`,
+        name: req,
+        category: 'Skill',
+        importance: 'Required',
+        weight: 20,
+        description: `Demonstrated proficiency in ${req}`,
+        semanticTokens: [req.toLowerCase()],
+      })),
     });
 
     onClose();

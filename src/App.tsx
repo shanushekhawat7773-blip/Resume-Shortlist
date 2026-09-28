@@ -13,12 +13,28 @@ import { CandidateComparisonView } from './components/views/CandidateComparisonV
 import { AnalyticsDashboardView } from './components/views/AnalyticsDashboardView';
 import { ReportsView } from './components/views/ReportsView';
 import { SettingsView } from './components/views/SettingsView';
+import { WhatIfSimulatorView } from './components/views/WhatIfSimulatorView';
+import { CandidateSearchView } from './components/views/CandidateSearchView';
+import { ModelEvaluationView } from './components/views/ModelEvaluationView';
+import { ResumeImprovementView } from './components/views/ResumeImprovementView';
+import { AuditLogView } from './components/views/AuditLogView';
 import { ResumeUploadModal } from './components/modals/ResumeUploadModal';
 import { CreateJobModal } from './components/modals/CreateJobModal';
+import { BatchUploadModal } from './components/modals/BatchUploadModal';
+import { CalculationExplainerModal } from './components/modals/CalculationExplainerModal';
 import { Loader2 } from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { activeTab, isAnalyzing, analyzingStep } = useRecruitment();
+  const {
+    activeTab,
+    isAnalyzing,
+    analyzingStep,
+    isBatchUploadOpen,
+    setIsBatchUploadOpen,
+    isExplainerOpen,
+    setIsExplainerOpen,
+    currentAnalysis,
+  } = useRecruitment();
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [createJobModalOpen, setCreateJobModalOpen] = useState(false);
 
@@ -43,6 +59,17 @@ const AppContent: React.FC = () => {
           isOpen={createJobModalOpen}
           onClose={() => setCreateJobModalOpen(false)}
         />
+        <BatchUploadModal
+          isOpen={isBatchUploadOpen}
+          onClose={() => setIsBatchUploadOpen(false)}
+        />
+        {currentAnalysis && (
+          <CalculationExplainerModal
+            isOpen={isExplainerOpen}
+            onClose={() => setIsExplainerOpen(false)}
+            analysis={currentAnalysis}
+          />
+        )}
       </div>
     );
   }
@@ -80,8 +107,13 @@ const AppContent: React.FC = () => {
             {activeTab === 'skills' && <SkillAnalysisView />}
             {activeTab === 'experience' && <ExperienceAnalysisView />}
             {activeTab === 'comparison' && <CandidateComparisonView />}
+            {activeTab === 'whatif' && <WhatIfSimulatorView />}
+            {activeTab === 'search' && <CandidateSearchView />}
+            {activeTab === 'evaluation' && <ModelEvaluationView />}
+            {activeTab === 'coaching' && <ResumeImprovementView />}
             {activeTab === 'analytics' && <AnalyticsDashboardView />}
             {activeTab === 'reports' && <ReportsView />}
+            {activeTab === 'audit' && <AuditLogView />}
             {activeTab === 'settings' && <SettingsView />}
           </div>
         </main>
@@ -119,6 +151,17 @@ const AppContent: React.FC = () => {
         isOpen={createJobModalOpen}
         onClose={() => setCreateJobModalOpen(false)}
       />
+      <BatchUploadModal
+        isOpen={isBatchUploadOpen}
+        onClose={() => setIsBatchUploadOpen(false)}
+      />
+      {currentAnalysis && (
+        <CalculationExplainerModal
+          isOpen={isExplainerOpen}
+          onClose={() => setIsExplainerOpen(false)}
+          analysis={currentAnalysis}
+        />
+      )}
     </div>
   );
 };

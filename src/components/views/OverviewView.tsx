@@ -13,6 +13,7 @@ import {
   ChevronRight,
   TrendingUp,
   FileCheck2,
+  UploadCloud,
 } from 'lucide-react';
 import { useRecruitment } from '../../context/RecruitmentContext';
 
@@ -30,6 +31,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ onOpenUpload, onOpen
     setSelectedCandidateId,
     setActiveTab,
     getAnalysisFor,
+    setIsBatchUploadOpen,
   } = useRecruitment();
 
   // Compute metrics for active job
@@ -85,6 +87,14 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ onOpenUpload, onOpen
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
+          <button
+            onClick={() => setIsBatchUploadOpen(true)}
+            className="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-medium px-3 py-2 rounded-lg border border-slate-700 transition-colors"
+            title="Batch process multiple resumes"
+          >
+            <UploadCloud className="w-3.5 h-3.5 text-brand-400" />
+            <span>Batch Pipeline</span>
+          </button>
           <button
             onClick={onOpenCreateJob}
             className="inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-750 text-slate-200 text-xs font-medium px-3.5 py-2 rounded-lg border border-slate-700 transition-colors"

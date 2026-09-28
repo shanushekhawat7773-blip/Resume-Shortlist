@@ -8,6 +8,7 @@ import {
 } from '../types';
 import { INITIAL_JOB_ROLES, INITIAL_CANDIDATES } from '../data/mockData';
 import { evaluateCandidateMatch, DEFAULT_SCORING_WEIGHTS } from '../services/scoringEngine';
+import { auditLogger } from '../services/auditLogger';
 
 export type AppTab =
   | 'landing'
@@ -18,8 +19,13 @@ export type AppTab =
   | 'skills'
   | 'experience'
   | 'comparison'
+  | 'whatif'
+  | 'search'
+  | 'evaluation'
+  | 'coaching'
   | 'analytics'
   | 'reports'
+  | 'audit'
   | 'settings';
 
 interface RecruitmentContextType {
@@ -66,6 +72,12 @@ interface RecruitmentContextType {
   isAnalyzing: boolean;
   analyzingStep: string;
   triggerUploadAnalysis: (newCandidate: Omit<Candidate, 'id' | 'uploadDate'>, targetJobId: string) => Promise<string>;
+
+  // Global Modals
+  isBatchUploadOpen: boolean;
+  setIsBatchUploadOpen: (open: boolean) => void;
+  isExplainerOpen: boolean;
+  setIsExplainerOpen: (open: boolean) => void;
 
   // Notifications
   notifications: Array<{ id: string; message: string; type: 'info' | 'success' | 'alert'; time: string }>;
@@ -124,6 +136,8 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [compareCandidateIds, setCompareCandidateIds] = useState<string[]>(['cand-1', 'cand-3', 'cand-6']);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analyzingStep, setAnalyzingStep] = useState('');
+  const [isBatchUploadOpen, setIsBatchUploadOpen] = useState(false);
+  const [isExplainerOpen, setIsExplainerOpen] = useState(false);
 
   const [notifications, setNotifications] = useState<Array<{ id: string; message: string; type: 'info' | 'success' | 'alert'; time: string }>>([
     { id: '1', message: 'Aarav Mehta scored 89% match for Senior Data Analyst', type: 'success', time: '10m ago' },
@@ -160,10 +174,20 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   const setScoringWeights = (weights: ScoringWeights) => {
     setScoringWeightsState(weights);
+    auditLogger.log({
+      action: 'WEIGHT_UPDATE',
+      details: `Evaluation weights updated: Required Skills ${weights.requiredSkills}%, Exp ${weights.experienceRelevance}%, Resp ${weights.responsibilities}%, Edu ${weights.education}%, Pref ${weights.preferredSkills}%, Proj ${weights.projects}%.`,
+      user: 'Vikram S. (Principal Recruiter)',
+    });
   };
 
   const resetScoringWeights = () => {
     setScoringWeightsState(DEFAULT_SCORING_WEIGHTS);
+    auditLogger.log({
+      action: 'WEIGHT_UPDATE',
+      details: 'Evaluation weights reset to organization standard baseline.',
+      user: 'Vikram S. (Principal Recruiter)',
+    });
   };
 
   // Evaluation cache & helper
@@ -218,6 +242,15 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
     setCandidates(prev => [newCand, ...prev]);
     setSelectedCandidateId(newId);
+
+    auditLogger.log({
+      action: 'UPLOAD',
+      candidateName: newCand.name,
+      jobTitle: jobs.find(j => j.id === newCand.appliedJobId)?.title,
+      details: `Resume uploaded (${newCand.fileName || 'document'}) and structured profile extracted.`,
+      user: 'Vikram S. (Principal Recruiter)',
+    });
+
     return newId;
   };
 
@@ -227,6 +260,13 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
     );
     const cand = candidates.find(c => c.id === candidateId);
     if (cand) {
+      auditLogger.log({
+        action: 'STAGE_CHANGE',
+        candidateName: cand.name,
+        details: `Candidate moved to stage: ${stage.toUpperCase().replace('_', ' ')}.`,
+        user: 'Vikram S. (Principal Recruiter)',
+      });
+
       setNotifications(prev => [
         {
           id: String(Date.now()),
@@ -249,7 +289,15 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   // Privacy function: explicitly deletes raw resume text and PII
   const deleteCandidateData = (candidateId: string) => {
+    const cand = candidates.find(c => c.id === candidateId);
     deleteCandidate(candidateId);
+    auditLogger.log({
+      action: 'PRIVACY_PURGE',
+      candidateName: cand?.name || candidateId,
+      details: 'Candidate raw resume text and stored PII permanently purged per data privacy request.',
+      user: 'Vikram S. (Principal Recruiter)',
+    });
+
     setNotifications(prev => [
       {
         id: String(Date.now()),
@@ -355,6 +403,10 @@ export const RecruitmentProvider: React.FC<{ children: React.ReactNode }> = ({ c
         isAnalyzing,
         analyzingStep,
         triggerUploadAnalysis,
+        isBatchUploadOpen,
+        setIsBatchUploadOpen,
+        isExplainerOpen,
+        setIsExplainerOpen,
         notifications,
         dismissNotification,
       }}

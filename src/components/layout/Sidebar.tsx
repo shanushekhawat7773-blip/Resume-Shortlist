@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   LayoutDashboard,
   FileSearch,
@@ -11,7 +10,11 @@ import {
   FileCheck2,
   Settings,
   ShieldCheck,
-  CheckCircle,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+  LineChart,
+  History,
 } from 'lucide-react';
 import { useRecruitment, AppTab } from '../../context/RecruitmentContext';
 
@@ -20,6 +23,7 @@ interface SidebarItem {
   label: string;
   icon: React.ComponentType<{ className?: string }>;
   badge?: string;
+  category?: string;
 }
 
 export const Sidebar: React.FC = () => {
@@ -28,15 +32,25 @@ export const Sidebar: React.FC = () => {
   const shortlistedCount = candidates.filter(c => c.stage === 'shortlisted' || c.stage === 'interview').length;
 
   const navItems: SidebarItem[] = [
+    // Core Workflow
     { id: 'overview', label: 'Overview', icon: LayoutDashboard },
     { id: 'analyzer', label: 'Resume Analyzer', icon: FileSearch, badge: 'Intelligence' },
     { id: 'jobs', label: 'Job Roles', icon: Briefcase },
     { id: 'shortlist', label: 'Candidate Shortlist', icon: KanbanSquare, badge: shortlistedCount > 0 ? String(shortlistedCount) : undefined },
+
+    // Intelligence & Evaluation
+    { id: 'search', label: 'Semantic Search', icon: Search, badge: 'NLP' },
+    { id: 'whatif', label: 'What-If Sensitivity', icon: SlidersHorizontal, badge: 'Simulator' },
     { id: 'skills', label: 'Skill Analysis', icon: Cpu },
     { id: 'experience', label: 'Experience Relevance', icon: Clock },
     { id: 'comparison', label: 'Candidate Compare', icon: GitCompare },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+    { id: 'coaching', label: 'Resume Coaching', icon: Sparkles, badge: 'Feedback' },
+
+    // Analytics & Governance
+    { id: 'analytics', label: 'Analytics Dashboard', icon: BarChart3 },
+    { id: 'evaluation', label: 'Model Evaluation', icon: LineChart, badge: 'Ground Truth' },
     { id: 'reports', label: 'Executive Reports', icon: FileCheck2 },
+    { id: 'audit', label: 'Audit Trail & Logs', icon: History, badge: 'Compliant' },
     { id: 'settings', label: 'Settings & Weights', icon: Settings },
   ];
 

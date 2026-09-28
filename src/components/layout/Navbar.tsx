@@ -13,6 +13,7 @@ import {
   Briefcase,
   X,
   CheckCircle2,
+  UploadCloud,
 } from 'lucide-react';
 import { useRecruitment, AppTab } from '../../context/RecruitmentContext';
 
@@ -32,6 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenUpload, onOpenCreateJob })
     setSearchQuery,
     notifications,
     dismissNotification,
+    setIsBatchUploadOpen,
   } = useRecruitment();
 
   const [showNotifications, setShowNotifications] = useState(false);
@@ -162,6 +164,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenUpload, onOpenCreateJob })
                 Open Dashboard
               </button>
             )}
+
+            {/* Batch Upload CTA */}
+            <button
+              onClick={() => setIsBatchUploadOpen(true)}
+              className="hidden sm:inline-flex items-center gap-1.5 bg-slate-800 hover:bg-slate-750 text-slate-200 border border-slate-700 text-xs font-semibold px-2.5 py-1.5 rounded-lg shadow-sm transition-all focus:ring-2 focus:ring-slate-600"
+              title="Process multi-candidate batch pipeline"
+            >
+              <UploadCloud className="w-3.5 h-3.5 text-brand-400" />
+              <span>Batch Pipeline</span>
+            </button>
 
             {/* Upload Resume CTA */}
             <button

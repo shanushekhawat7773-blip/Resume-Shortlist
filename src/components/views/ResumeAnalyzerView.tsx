@@ -42,6 +42,7 @@ export const ResumeAnalyzerView: React.FC = () => {
     updateCandidateStage,
     deleteCandidateData,
     setActiveTab,
+    setIsExplainerOpen,
   } = useRecruitment();
 
   const [activeAnalysisSubtab, setActiveAnalysisSubtab] = useState<
@@ -244,13 +245,22 @@ export const ResumeAnalyzerView: React.FC = () => {
                     Calculated from verifiable resume signals. Each dimension contributes according to configured organizational weights.
                   </p>
                 </div>
-                <button
-                  onClick={() => setActiveTab('settings')}
-                  className="text-xs text-brand-400 hover:text-brand-300 font-medium flex items-center gap-1"
-                >
-                  <Sliders className="w-3.5 h-3.5" />
-                  <span>Configure Weights</span>
-                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setIsExplainerOpen(true)}
+                    className="text-xs text-brand-400 hover:text-brand-300 font-medium flex items-center gap-1 bg-brand-950/40 px-2.5 py-1 rounded border border-brand-850 hover:bg-brand-900/50 transition-colors"
+                  >
+                    <HelpCircle className="w-3.5 h-3.5" />
+                    <span>Explain Formula</span>
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('settings')}
+                    className="text-xs text-slate-300 hover:text-white font-medium flex items-center gap-1 bg-slate-800 px-2.5 py-1 rounded border border-slate-700 hover:bg-slate-750 transition-colors"
+                  >
+                    <Sliders className="w-3.5 h-3.5" />
+                    <span>Configure Weights</span>
+                  </button>
+                </div>
               </div>
 
               <div className="space-y-3">
